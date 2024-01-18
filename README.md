@@ -6,13 +6,17 @@ Welcome to the FreeRTOS Fundamentals project! This small-scale project delves in
 
 ## Project Highlights 🧾
 
-### Binary Semaphores 🔒
+### Semaphores 🔒
 
-Explore the power of binary semaphores, ensuring synchronization and protection for the `Shared_Resource` variable. Thread safety is at the heart of this project, showcasing the significance of these semaphores.
+- Binary Semaphore : 
+ensuring synchronization and protection for the `Shared_Resource` variable. To aovid the context switch in non-entrant functions;
+
+- Counting Semaphore :
+Used to Synchronize tasks.
 
 ### Queue Communication 📬
 
-Discover the seamless communication between tasks through a well-designed queue system. Tasks efficiently exchange data, illustrating the importance of inter-task communication for a cohesive system.
+ Tasks communicate and share info, teaming up smoothly through inter-task communication for a safe data system. 🔄🤝
 
 ### Periodic Timer ⏰
 
