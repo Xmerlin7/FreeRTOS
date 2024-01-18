@@ -1,0 +1,9 @@
+../Core/Src/freertos.c:28:13:BL_print_message	112	static
+../Core/Src/freertos.c:58:9:Non_Reentrant_Fun	4	static
+../Core/Src/freertos.c:126:6:vApplicationIdleHook	4	static
+../Core/Src/freertos.c:145:6:MX_FREERTOS_Init	8	static
+../Core/Src/freertos.c:206:6:StartTask01	16	static
+../Core/Src/freertos.c:226:6:StartTask02	24	static
+../Core/Src/freertos.c:248:6:StartTask03	24	static
+../Core/Src/freertos.c:271:6:StartTask04	16	static
+../Core/Src/freertos.c:293:6:StartTask05	16	static
