@@ -16,7 +16,7 @@ Discover the seamless communication between tasks through a well-designed queue 
 
 ### Software Timer ⏰
 
-Experience the precision of a software timer as it orchestrates periodic actions. Witness the overwrite of the `Shared_Resource` variable every 10 seconds, showcasing the versatility and reliability of software timers within the FreeRTOS framework.
+Experience the precision of a software timer as it orchestrates periodic actions. Witness the overwrite of the `Shared_Resource` variable every 10 seconds by a `Callback01` function.
 
 ### UART Communication 📡
 
