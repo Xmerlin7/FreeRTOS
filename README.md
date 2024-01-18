@@ -38,7 +38,8 @@ Contributions are not just welcome; they're encouraged! Feel free to submit issu
 
 For any questions or suggestions, reach out through:
 
-- [Email](mailto:your.email@example.com)
-- [Twitter](https://twitter.com/yourtwitterhandle)
-
+  <a href="https://www.linkedin.com/in/seif-eldarageely-a27125227/?trk=public-profile-join-page" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="linkedin logo"  />
+  </a>
+---
 Happy coding! 🚀
