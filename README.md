@@ -8,15 +8,15 @@ Welcome to the FreeRTOS Fundamentals project! This small-scale project delves in
 
 ### Binary Semaphores 🔒
 
-Explore the power of binary semaphores, ensuring synchronization and protection for the `Shared_Resource` variable of type `uint32_t`. Thread safety is at the heart of this project, showcasing the significance of these semaphores.
+Explore the power of binary semaphores, ensuring synchronization and protection for the `Shared_Resource` variable. Thread safety is at the heart of this project, showcasing the significance of these semaphores.
 
 ### Queue Communication 📬
 
 Discover the seamless communication between tasks through a well-designed queue system. Tasks efficiently exchange data, illustrating the importance of inter-task communication for a cohesive system.
 
-### Software Timer ⏰
+### Periodic Timer ⏰
 
-Experience the precision of a software timer as it orchestrates periodic actions. Witness the overwrite of the `Shared_Resource` variable every 10 seconds by a `Callback01` function.
+Experience the precision of a software timer as it orchestrates periodic actions. Witness the overwrite of the `Shared_Resource` variable every **10 seconds** by a `Callback01` function.
 
 ### UART Communication 📡
 
