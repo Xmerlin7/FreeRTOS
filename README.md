@@ -1,4 +1,4 @@
-# FreeRTOS Fundamentals Project README
+# FreeRTOS Fundamentals Project
 
 ## Overview 🚀
 
@@ -20,22 +20,19 @@ Experience the precision of a software timer as it orchestrates periodic actions
 
 ### UART Communication 📡
 
-Embark on a journey into UART communication, where real-time data is displayed through the RealTerm terminal. This visual representation enhances the project's user interface, providing dynamic insights into the system's behavior.
+Embark on a journey into UART communication, where real-time data is displayed through the RealTerm terminal. For this project, the STM32F401RCT6 microcontroller is utilized, with USB UART providing the communication link to RealTerm. This visual representation enhances the project's user interface, providing dynamic insights into the system's behavior.
 
 ## Usage 🛠
 
 1. Clone the repository.
 2. Set up your development environment with FreeRTOS.
-3. Build and flash the project to your target device.
-4. Observe the RealTerm terminal to witness the dynamic behavior of the system.
+3. Build and flash the project to your STM32F401RCT6 target device.
+4. Connect USB UART for RealTerm communication.
+5. Observe the RealTerm terminal to witness the dynamic behavior of the system.
 
 ## Contributing 🤝
 
 Contributions are not just welcome; they're encouraged! Feel free to submit issues or pull requests to enhance the fundamental understanding of FreeRTOS in this project.
-
-## License 📜
-
-This project operates under the [MIT License](LICENSE).
 
 ## Contact 📬
 
