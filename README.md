@@ -18,7 +18,7 @@ Used to Synchronize tasks.
 
  Tasks communicate and share info, teaming up smoothly through inter-task communication for a safe data system. 🔄🤝
 
-### Periodic Timer ⏰
+### Software Periodic Timer ⏰
 
 Experience the precision of a software timer as it orchestrates periodic actions. Witness the overwrite of the `Shared_Resource` variable every **10 seconds** by a `Callback01` function.
 
