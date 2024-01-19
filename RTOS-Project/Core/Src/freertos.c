@@ -22,7 +22,7 @@
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
-#include "queue.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 static void BL_print_message(uint8_t *format, ...)
@@ -55,7 +55,6 @@ static void BL_print_message(uint8_t *format, ...)
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 uint32_t Shared_Resourse;
-QueueHandle_t xQueue1 = NULL;
 uint8_t Non_Reentrant_Fun(void)
 {
 	Shared_Resourse++;
@@ -96,11 +95,6 @@ const osThreadAttr_t myTask05_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for myTimer01 */
-osTimerId_t myTimer01Handle;
-const osTimerAttr_t myTimer01_attributes = {
-  .name = "myTimer01"
-};
 /* Definitions for myBinarySem01 */
 osSemaphoreId_t myBinarySem01Handle;
 const osSemaphoreAttr_t myBinarySem01_attributes = {
@@ -122,7 +116,6 @@ void StartTask02(void *argument);
 void StartTask03(void *argument);
 void StartTask04(void *argument);
 void StartTask05(void *argument);
-void Callback01(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -163,15 +156,11 @@ void MX_FREERTOS_Init(void) {
   myBinarySem01Handle = osSemaphoreNew(1, 0, &myBinarySem01_attributes);
 
   /* creation of myCountingSem01 */
-  myCountingSem01Handle = osSemaphoreNew(2, 2, &myCountingSem01_attributes);
+  myCountingSem01Handle = osSemaphoreNew(2, 0, &myCountingSem01_attributes);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
-
-  /* Create the timer(s) */
-  /* creation of myTimer01 */
-  myTimer01Handle = osTimerNew(Callback01, osTimerPeriodic, NULL, &myTimer01_attributes);
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
@@ -179,15 +168,6 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-
-  /* Create a queue capable of containing 10 unsigned long values. */
-  xQueue1 = xQueueCreate( 10, sizeof( unsigned long ) );
-  {
-	  if (xQueue1 == NULL)
-	  {
-		  BL_print_message("\r\n Queue creation failed \n");
-	  }
-  }
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -226,13 +206,10 @@ void MX_FREERTOS_Init(void) {
 void StartTask01(void *argument)
 {
   /* USER CODE BEGIN StartTask01 */
-	osTimerStart(myTimer01Handle, 11000);
-	BL_print_message("\r Task1 released started the Timer -> \n");
   /* Infinite loop */
   for(;;)
   {
-	  BL_print_message("\r\n Task1 released the semaphore -> \n");
-
+	  BL_print_message("\r\n Task1 is released -> \n");
 	  osSemaphoreRelease(myCountingSem01Handle);
 	  osDelay(2000);
   }
@@ -249,26 +226,14 @@ void StartTask01(void *argument)
 void StartTask02(void *argument)
 {
   /* USER CODE BEGIN StartTask02 */
-	uint32_t Queue_Counter = 0;
-	BaseType_t QueueRet = pdTRUE;
+	uint32_t Task_Counter = 0;
   /* Infinite loop */
   for(;;)
   {
-	QueueRet = xQueueSendToBack(xQueue1, (void *) &Queue_Counter, 500);
-	if (QueueRet != pdTRUE)
-	{
-		BL_print_message("\r\n Task2 failed to send %d \r\n", Queue_Counter);
-	}
-	else
-	{
-		BL_print_message("\r\n Task2 sent %d to Task3 \r\n", Queue_Counter);
-	}
-
-	Queue_Counter++;
-	if (Queue_Counter == 11)
-		Queue_Counter = 0;
+	BL_print_message("\r\n Task2 is running %d \r\n", Task_Counter);
+	Task_Counter++;
 	osSemaphoreRelease(myCountingSem01Handle);
-	osDelay(3000);
+	osDelay(2000);
   }
   /* USER CODE END StartTask02 */
 }
@@ -283,23 +248,14 @@ void StartTask02(void *argument)
 void StartTask03(void *argument)
 {
   /* USER CODE BEGIN StartTask03 */
-	uint32_t Queue_Counter = 0;
-	BaseType_t QueueRet = pdTRUE;
+	uint32_t Task_Counter = 0;
   /* Infinite loop */
   for(;;)
   {
 	osSemaphoreAcquire(myCountingSem01Handle, 4000);
 	osSemaphoreAcquire(myCountingSem01Handle, 4000);
-
-	QueueRet = xQueueReceive(xQueue1, &Queue_Counter, 500);
-	if (QueueRet != pdTRUE)
-	{
-		BL_print_message("\r\n Task3 is running \r\n");
-	}
-	else
-	{
-		BL_print_message("\r\n Task3 received %d from Task2 \r\n", Queue_Counter);
-	}
+	BL_print_message("\r\n Task3 is running %d \r\n", Task_Counter);
+	Task_Counter++;
 
   }
   /* USER CODE END StartTask03 */
@@ -346,14 +302,6 @@ void StartTask05(void *argument)
     osDelay(4000);
   }
   /* USER CODE END StartTask05 */
-}
-
-/* Callback01 function */
-void Callback01(void *argument)
-{
-  /* USER CODE BEGIN Callback01 */
-	Shared_Resourse = 0;
-  /* USER CODE END Callback01 */
 }
 
 /* Private application code --------------------------------------------------*/
