@@ -7,7 +7,6 @@ Welcome to the FreeRTOS Fundamentals project! This small-scale project that I us
 ## Project Highlights 🧾
 
 ### Semaphores 🔒
-
 - Binary Semaphore : 
 ensures protection for the `Shared_Resource` variable. To aovid the context switch in non-entrant functions;
 
