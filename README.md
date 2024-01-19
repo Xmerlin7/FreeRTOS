@@ -2,7 +2,7 @@
 
 ## Overview 🚀
 
-Welcome to the FreeRTOS Fundamentals project! This small-scale project that I used a mix APIs of native freeRTOS and CMSIS delves into the core elements of FreeRTOS, offering a hands-on exploration of key concepts. Let's dive into the fundamentals:
+Welcome to the FreeRTOS Fundamentals project! This small-scale project that I used a mix APIs of **native freeRTOS and CMSIS** delves into the core elements of FreeRTOS, offering a hands-on exploration of key concepts. Let's dive into the fundamentals:
 
 ## Project Highlights 🧾
 
